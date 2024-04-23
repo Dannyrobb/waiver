@@ -10,79 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- <style>
-      .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9999;
-      }
-
-      .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        z-index: 10000;
-      }
-
-      .fade-in {
-        animation: fadeIn 0.5s ease-in-out forwards;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      body {
-        font-family: Arial, sans-serif;
-        display:flex;
-        justify-content: center;
-       
-      }
-      #signatureCanvas {
-        border: 1px solid #000;
-
-      }
-    #waivercontainer{
-    direction: rtl; /* Right-to-left text direction for Hebrew */
-          text-align: right;
-    }
-      h2 {
-        text-align: center;
-      }
-
-      #waiverText {
-        margin-bottom: 20px;
-      }
-
-      #signatureCanvas {
-        border: 1px solid #000;
-        margin-bottom: 20px;
-      }
-
-      button {
-        display: block;
-        margin: 0 auto;
-      }
-      #everythingContainer{
-        width:750px;        padding:10px;
-
-      }
-    </style> -->
+    
     <style>
       /* Global styles */
       body {
@@ -284,45 +212,87 @@
     <!-- Popup content -->
     
     <script>
+      // const canvas = document.getElementById("signatureCanvas");
+      // const ctx = canvas.getContext("2d");
+      // let isDrawing = false;
+
+      // function startPosition(e) {
+      //   isDrawing = true;
+      //   draw(e);
+      // }
+
+      // function endPosition() {
+      //   isDrawing = false;
+      //   ctx.beginPath();
+      // }
+
+      // function draw(e) {
+      //   if (!isDrawing) return;
+
+      //   // Get the position of the canvas relative to the viewport
+      //   const rect = canvas.getBoundingClientRect();
+
+      //   // Calculate the position of the mouse relative to the canvas
+      //   const mouseX = e.clientX - rect.left;
+      //   const mouseY = e.clientY - rect.top;
+
+      //   ctx.lineWidth = 2;
+      //   ctx.lineCap = "round";
+      //   ctx.strokeStyle = "#000";
+
+      //   // Use the corrected mouse position to draw on the canvas
+      //   ctx.lineTo(mouseX, mouseY);
+      //   ctx.stroke();
+      //   ctx.beginPath();
+      //   ctx.moveTo(mouseX, mouseY);
+      // }
+
+      // canvas.addEventListener("mousedown", startPosition);
+      // canvas.addEventListener("mouseup", endPosition);
+      // canvas.addEventListener("mousemove", draw);
       const canvas = document.getElementById("signatureCanvas");
-      const ctx = canvas.getContext("2d");
-      let isDrawing = false;
+const ctx = canvas.getContext("2d");
+let isDrawing = false;
 
-      function startPosition(e) {
-        isDrawing = true;
-        draw(e);
-      }
+function startPosition(e) {
+  isDrawing = true;
+  draw(e);
+}
 
-      function endPosition() {
-        isDrawing = false;
-        ctx.beginPath();
-      }
+function endPosition() {
+  isDrawing = false;
+  ctx.beginPath();
+}
 
-      function draw(e) {
-        if (!isDrawing) return;
+function draw(e) {
+  if (!isDrawing) return;
 
-        // Get the position of the canvas relative to the viewport
-        const rect = canvas.getBoundingClientRect();
+  if (e.type === "touchmove" || e.type === "touchstart") {
+    // Get the position of the touch relative to the canvas for mobile devices
+    const rect = canvas.getBoundingClientRect();
+    const touchX = e.touches[0].clientX - rect.left;
+    const touchY = e.touches[0].clientY - rect.top;
+    ctx.lineTo(touchX, touchY);
+  } else {
+    // Get the position of the mouse relative to the canvas for desktop
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    ctx.lineTo(mouseX, mouseY);
+  }
+  
+  ctx.stroke();
+  ctx.beginPath();
+}
 
-        // Calculate the position of the mouse relative to the canvas
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
+canvas.addEventListener("mousedown", startPosition);
+canvas.addEventListener("mouseup", endPosition);
+canvas.addEventListener("mousemove", draw);
 
-        ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-        ctx.strokeStyle = "#000";
-
-        // Use the corrected mouse position to draw on the canvas
-        ctx.lineTo(mouseX, mouseY);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(mouseX, mouseY);
-      }
-
-      canvas.addEventListener("mousedown", startPosition);
-      canvas.addEventListener("mouseup", endPosition);
-      canvas.addEventListener("mousemove", draw);
-
+// Add touch event listeners for mobile devices
+canvas.addEventListener("touchstart", startPosition);
+canvas.addEventListener("touchend", endPosition);
+canvas.addEventListener("touchmove", draw);
   // Your existing code...
 
   async function submitForm(event) {
