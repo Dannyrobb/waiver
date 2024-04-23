@@ -289,8 +289,10 @@
       // Add event listeners for touch events
       canvas.addEventListener("touchstart", startPosition);
       canvas.addEventListener("touchend", endPosition);
-      canvas.addEventListener("touchmove", draw);
-
+      canvas.addEventListener("touchmove", function(event) {
+  event.preventDefault(); // Prevent default touch behavior (scrolling)
+  draw(event)
+      })
   async function submitForm(event) {
     event.preventDefault(); // Prevent default form submission
 
