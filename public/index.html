@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tattoo Waiver Form</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- <style>
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display:flex;
+        justify-content: center;
+       
+      }
+      #signatureCanvas {
+        border: 1px solid #000;
+
+      }
+    #waivercontainer{
+    direction: rtl; /* Right-to-left text direction for Hebrew */
+          text-align: right;
+    }
+      h2 {
+        text-align: center;
+      }
+
+      #waiverText {
+        margin-bottom: 20px;
+      }
+
+      #signatureCanvas {
+        border: 1px solid #000;
+        margin-bottom: 20px;
+      }
+
+      button {
+        display: block;
+        margin: 0 auto;
+      }
+      #everythingContainer{
+        width:750px;        padding:10px;
+
+      }
+    </style> -->
+    <style>
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 100vh; */
+        margin: 0;
+        padding: 20px;
+      }
+      #waivercontainer{
+    direction: rtl; /* Right-to-left text direction for Hebrew */
+          text-align: right;
+    }
+      /* Container styles */
+      #everythingContainer {
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+      }
+    
+      /* Header styles */
+      h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+    
+      /* Text styles */
+      #waiverText {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 30px;
+        text-align: right;
+      }
+    
+      /* Form styles */
+      #waiverForm {
+        text-align: center;
+      }
+    
+      /* Canvas styles */
+      #signatureCanvas {
+        border: 1px solid #ccc;
+        margin: 0 auto 30px;
+        display: block;
+      }
+    
+      /* Button styles */
+      button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    
+      button:hover {
+        background-color: #45a049;
+      }
+    
+      /* Popup styles */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+      }
+    
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+      }
+    
+      /* Animation styles */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="everythingContainer"> <h2>טופס קבלת אחריות לקעקוע</h2>
+      <div id="waivercontainer">
+       
+        <div id="waiverText">
+          <p>
+            * אני מסכימ/ה שההחלטה על הסקיצה ומיקומה הוסכם ונבחר על ידי. ידוע לי שלאחר הסכמתי לביצוע העבודה אין ביכולתי להביע חרטה או כל תלונה
+            מול SHIDA וכאל האחריות עוברת אלי ובהסכמתי.
+          </p>
+          <p>
+            * ידוע לי שהקעקוע בוצע בתנאים וכלים סטריליים שנפתחו אל מול עיניי. אני מתחייב לנהוג בהתאם להוראות הטיפול למשך התקופה המומלצת, כמו כן
+            ידוע לי שאי ביצוע ההוראות עלול לגרום לסיבוכים רפואיים, זיהומים, דימומים, התנפחויות, מוגלות, נוזלים, חום גבוהה ואף לתופעות חמורות
+            יותר ובנוסף לפגוע באיכות הקעקוע.
+          </p>
+          <p>
+            * במידה ולא אפעל על פי ההנחיות הנדרשות האחריות מוטלת על עצמי בלבד ויורדת מהמקעקע ואיני יכול להגיש כל תביעה משפטית / תלונה משטרתית.
+          </p>
+          <p>
+            * ידוע והוסבר לי שהטיפול בפצע פתוח בראש ובראשונה דורש שמירה על סטריליות ותנאים היגיינים גבוהים. ידוע והוסבר לי שאם אגע בקעקוע בידיים
+            מלוכלכות או כל מגע מלוכלך אחר, אני מסכן את עצמי בזיהום, דימומים, מוגלות, נוזלים, אדמומיות, התנפחויות ואף תופעות לוואי חמורות יותר.
+          </p>
+          <p>* כל התחרטות לאחר ביצוע הסקיצה/קעקוע, מיקום העבודה או הצבעים שלה לא תבוא כטענה אל המקעקע.</p>
+          <p>
+            * במקרה של תגובה אלרגית לצבע או כל ציוד לביצוע הקעקוע בזמן ביצוע קעקוע חדש, מילוי שני בקעקוע או חידוש קעקוע ישן בגוף הלקוח אינו יבוא
+            בטענה/תביעה/תלונה משפטית/משטרתית כלפי המקעקע.
+          </p>
+          <p>
+            * כמו כן לא תחול כל אחריות על המקעקע בתנאי שהאדם עובד או עבד בעבודה מלכלכלת ו/או לא הקפיד על בגדים וסדינים נקיים ובנוסף לא על מגע עם
+            בעלי חיים אשר העביר/גרם זיהום או נזק כלשהו לקעקוע והלקוח לא יגיע בטענה/תביעה/תלונה כלשהי כלפי המקעקע.
+          </p>
+          <p>* האם את/ה סובל/ת מאלרגיות כלשהן (אלרגיה למתכות, לאטקס)? - 
+            <input type="radio" name="allergies" value="yes"> כן 
+            <input type="radio" name="allergies" value="no"> לא
+          </p>
+          <p>* האם אובחנת בסוכרת, המופיליה או אפילפסיה? - 
+            <input type="radio" name="diabetes_epilepsy" value="yes"> כן 
+            <input type="radio" name="diabetes_epilepsy" value="no"> לא
+          </p>
+          <p>* האם אובחנת בהפטיטיס (צהבת) , אייץ' איי וי או כל סוג אחר של מחלה מידבקת? - 
+            <input type="radio" name="hepatitis" value="yes"> כן 
+            <input type="radio" name="hepatitis" value="no"> לא
+          </p>
+          <p>* האם את/ה סובל/ת ממחלה או מצב רפואי מיוחד בעור (פסוריאזיס, היסטוריה של קלואידים וכדומה)? - 
+            <input type="radio" name="skin_condition" value="yes"> כן 
+            <input type="radio" name="skin_condition" value="no"> לא
+          </p>
+          <p>* האם את בהריון או מניקה? - 
+            <input type="radio" name="pregnant_nursing" value="yes"> כן 
+            <input type="radio" name="pregnant_nursing" value="no"> לא
+          </p>
+          <p>*אם לא סימנת כן/לא תושבתך תחשב כלא</p>
+          <p>* גילי עולה על 16 שנים - אני מאשר/ת</p>
+          <p>
+            * אני מאשר/ת כי - קראתי והבנתי את כל המידע בטופס זה וניתנה לי האפשרות לשאול כל שאלה לגביי ביצוע הקעקוע וכל שאלותיי נענו במלואן. אני
+            מאשרת כי כל המידע שסיפקתי לעיל הנו נכון ומדויק למיטב ידיעתי.
+          </p>
+          <div>
+
+          </div>
+          <div style="text-align: center;">
+            <div style="margin:7px">
+              <label for="fullname"> שם מלא</label>
+              <input name="fullname"/>
+            </div>
+          <div>     <label for="teudatZehut">מספר תז</label>
+            <input name="teudatZehut"/></div>
+       
+    </div>
+
+          <h3 style="text-align: center">חתימה</h3>
+        <form id="waiverForm" onsubmit="submitForm(event)" style="text-align: center">
+          <!-- Add your waiver terms here -->
+         
+          <canvas id="signatureCanvas" width="300" height="150"></canvas>
+          <button type="submit">אני מאשר/ת</button>
+        </form>
+      </div>
+      <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+      <p>תודה על ההגשה!</p>
+      <p>מעבר ל<a href="https://www.instagram.com/shida.tattoo">Instagram של SHIDA</a></p>
+    </div>
+
+    </div>
+    
+
+    <!-- Popup content -->
+    
+    <script>
+      const canvas = document.getElementById("signatureCanvas");
+      const ctx = canvas.getContext("2d");
+      let isDrawing = false;
+
+      function startPosition(e) {
+        isDrawing = true;
+        draw(e);
+      }
+
+      function endPosition() {
+        isDrawing = false;
+        ctx.beginPath();
+      }
+
+      function draw(e) {
+        if (!isDrawing) return;
+
+        // Get the position of the canvas relative to the viewport
+        const rect = canvas.getBoundingClientRect();
+
+        // Calculate the position of the mouse relative to the canvas
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "#000";
+
+        // Use the corrected mouse position to draw on the canvas
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(mouseX, mouseY);
+      }
+
+      canvas.addEventListener("mousedown", startPosition);
+      canvas.addEventListener("mouseup", endPosition);
+      canvas.addEventListener("mousemove", draw);
+
+  // Your existing code...
+
+  async function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Capture the signature as you're currently doing
+    // Capture the entire page as an image using html2canvas
+    
+    const everythingContainer=document.getElementById("everythingContainer")
+    const pageImage = await html2canvas(everythingContainer, {
+      scale: 0.55, // Reduce scale to 50%
+    });
+    // Convert the page image to a data URL
+    const pageDataURL = pageImage.toDataURL("image/jpeg"); 
+    document.getElementById("overlay").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    // Send the combined image to the server
+    const response =  fetch("/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ page: pageDataURL }),
+    });
+
+      // Show overlay and popup
+      
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        window.location.href = "https://www.instagram.com/shida.tattoo";
+      }, 2000);
+  
+  }
+
+    </script>
+  </body>
+</html>
