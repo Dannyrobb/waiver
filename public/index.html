@@ -185,10 +185,10 @@
           <div style="text-align: center;">
             <div style="margin:7px">
               <label for="fullname"> שם מלא</label>
-              <input name="fullname"/>
+              <input name="fullname" style="font-size: 20px;"/>
             </div>
           <div>     <label for="teudatZehut">מספר תז</label>
-            <input name="teudatZehut"/></div>
+            <input name="teudatZehut" style="font-size: 20px;"/></div>
        
     </div>
 
@@ -205,7 +205,7 @@
       <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
       <p>תודה על ההגשה!</p>
-      <p>מעבר ל<a href="https://www.instagram.com/shida.tattoo">Instagram של SHIDA</a></p>
+      <p >מעבר ל<a href="https://www.instagram.com/shida.tattoo">Instagram של SHIDA</a></p>
     </div>
 
     </div>
@@ -220,44 +220,7 @@
       function clearSignature() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
-      // const canvas = document.getElementById("signatureCanvas");
-      // const ctx = canvas.getContext("2d");
-      // let isDrawing = false;
-
-      // function startPosition(e) {
-      //   isDrawing = true;
-      //   draw(e);
-      // }
-
-      // function endPosition() {
-      //   isDrawing = false;
-      //   ctx.beginPath();
-      // }
-
-      // function draw(e) {
-      //   if (!isDrawing) return;
-
-      //   // Get the position of the canvas relative to the viewport
-      //   const rect = canvas.getBoundingClientRect();
-
-      //   // Calculate the position of the mouse relative to the canvas
-      //   const mouseX = e.clientX - rect.left;
-      //   const mouseY = e.clientY - rect.top;
-
-      //   ctx.lineWidth = 2;
-      //   ctx.lineCap = "round";
-      //   ctx.strokeStyle = "#000";
-
-      //   // Use the corrected mouse position to draw on the canvas
-      //   ctx.lineTo(mouseX, mouseY);
-      //   ctx.stroke();
-      //   ctx.beginPath();
-      //   ctx.moveTo(mouseX, mouseY);
-      // }
-
-      // canvas.addEventListener("mousedown", startPosition);
-      // canvas.addEventListener("mouseup", endPosition);
-      // canvas.addEventListener("mousemove", draw);
+      
       const canvas = document.getElementById("signatureCanvas");
       const ctx = canvas.getContext("2d");
       let isDrawing = false;
